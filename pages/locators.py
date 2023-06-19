@@ -13,6 +13,7 @@ class AccountPageLocators():
 class BasePageLocators():
     LOGOUT_BTN = (By.XPATH, "//button[starts-with(text(),'Logout')]")
     #LOGOUT_BTN = (By.XPATH, "//button[@ng-click='byebye()']")
+    HOME_BTN = (By.XPATH, "//button[starts-with(text(),'Home')]")
 
 class LoginPageLocators():
     LOGIN_CUSTOMER_BTN = (By.XPATH, "//button[starts-with(text(),'Customer')]")

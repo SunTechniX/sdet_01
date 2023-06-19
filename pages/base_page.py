@@ -35,8 +35,14 @@ class BasePage():
             return False
         return True
 
+    def click_home_btn(self):
+        self.browser.find_element(*BasePageLocators.HOME_BTN).click()
+
     def click_logout_btn(self):
         self.browser.find_element(*BasePageLocators.LOGOUT_BTN).click()
+
+    def should_be_home_btn(self):
+        assert self.is_element_present(*BasePageLocators.HOME_BTN), "Where is HOME Button? This button is not presented"
 
     def should_be_logout_btn(self):
         assert self.is_element_present(*BasePageLocators.LOGOUT_BTN), "Logout Button is not presented"

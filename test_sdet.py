@@ -6,6 +6,7 @@ from .pages.login_page import LoginPage
 from .pages.account_page import AccountPage
 from .pages.trans_page import TransPage
 
+
 LINK = "https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login"
 
 @pytest.mark.harry_potter
@@ -52,3 +53,6 @@ class TestHarryPotter():
 
         trans_page.should_be_logout_btn()
         trans_page.click_logout_btn()
+        trans_page.should_be_home_btn()
+        trans_page.click_home_btn()
+
