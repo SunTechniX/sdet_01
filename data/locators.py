@@ -10,10 +10,15 @@ class AccountPageLocators():
     ACC_DEPOSIT_SUCCESS_MSG = (By.XPATH, "//span[@ng-show='message']")
     ACC_TRANSACT_BTN = (By.XPATH, "//button[@ng-click='transactions()']")
 
-class BasePageLocators():
-    LOGOUT_BTN = (By.XPATH, "//button[starts-with(text(),'Logout')]")
-    #LOGOUT_BTN = (By.XPATH, "//button[@ng-click='byebye()']")
-    HOME_BTN = (By.XPATH, "//button[starts-with(text(),'Home')]")
+class MainPageLocators():
+    @staticmethod
+    def base_button(name_btn: str) -> tuple[By, str]:
+        '''
+        Вернуть совокупный локатор в виде кортежа из метода поиска элемента (By) и локатора элемента (str)
+
+        :param name_btn: название кнопки (int)
+        '''
+        return By.XPATH, f"//button[starts-with(text(),'{name_btn}')]"
 
 class LoginPageLocators():
     LOGIN_CUSTOMER_BTN = (By.XPATH, "//button[starts-with(text(),'Customer')]")

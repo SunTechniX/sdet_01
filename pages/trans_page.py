@@ -1,12 +1,12 @@
-from .base_page import BasePage
-from .locators import TransPageLocators
+from .main_page import MainPage
+from data.locators import TransPageLocators
 from datetime import datetime
 import locale
 
 
-class TransPage(BasePage):
+class TransPage(MainPage):
     def click_login_button(self):
-        self.browser.find_element(*TransPageLocators.TRANS_TABLE).click()
+        self.click_to_element(TransPageLocators.TRANS_TABLE)
 
     def check_trans_cell_amount(self, amount):
         trans_amount_s = self.browser.find_element(*TransPageLocators.TRANS_CELL_AMOUNT).text
@@ -25,10 +25,10 @@ class TransPage(BasePage):
 
 
     def should_be_trans_table(self):
-        assert self.is_element_present(*TransPageLocators.TRANS_TABLE), "Transactions Table is not presented"
+        assert self.is_element_present(TransPageLocators.TRANS_TABLE), "Transactions Table is not presented"
 
     def should_be_trans_cell_amount(self):
-        assert self.is_element_present(*TransPageLocators.TRANS_CELL_AMOUNT), "Trans Cell Amount is not presented"
+        assert self.is_element_present(TransPageLocators.TRANS_CELL_AMOUNT), "Trans Cell Amount is not presented"
 
     def should_be_trans_cell_date(self):
-        assert self.is_element_present(*TransPageLocators.TRANS_CELL_DATE), "Trans Cell Date is not presented"
+        assert self.is_element_present(TransPageLocators.TRANS_CELL_DATE), "Trans Cell Date is not presented"
