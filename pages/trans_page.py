@@ -27,7 +27,7 @@ class TransPage(MainPage):
         assert amount == trans_amount, "Transaction Amount is not Equal!"
 
     def compare_trans_cell_date(self) -> None:
-        ''' Проверка даты в таблице с текущей датой '''
+        ''' Проверка текущей даты и даты в таблице Transactions '''
         locale.setlocale(locale.LC_TIME, 'en')
         dtext = self.get_element_text(TransPageLocators.trans_table_cell(1))
         month = datetime.now().strftime("%b")

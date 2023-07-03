@@ -33,15 +33,10 @@ class BasePage:
     def get_element(self, locator: tuple, timeout: int = 10) -> WebElement:
         ''' Ожидает появление WebElement-а и возвращяет его '''
         return WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located(locator))
-        # return self.browser.find_element(*locator)
 
     def get_element_text(self, locator: tuple[By, str]) -> str:
         ''' Возвращает текст написанный на WebElement-е '''
         return self.get_element(locator).text
-
-    def scroll_to_element(self, element: WebElement) -> None:
-        ''' Прокручиет web-страницу до WebElement-а '''
-        self.browser.execute_script("return arguments[0].scrollIntoView(true);", element)
 
     def write_to_element(self, locator: tuple[By, str], text: str, timeout=10) -> None:
         ''' Ожидает появления WebElement-а и пишет в него text '''
