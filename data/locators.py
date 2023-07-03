@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class AccountPageLocators():
+class AccountPageLocators:
     ACC_WELCOME_TEXT = (By.XPATH, "//strong[contains(text(),'Welcome')]")
     ACC_WELCOME_USER = (By.XPATH, "//strong[contains(text(),'Welcome')]/span")
     ACC_DEPOSIT_BTN = (By.XPATH, "//button[starts-with(text(),'Deposit')]")
@@ -10,24 +10,35 @@ class AccountPageLocators():
     ACC_DEPOSIT_SUCCESS_MSG = (By.XPATH, "//span[@ng-show='message']")
     ACC_TRANSACT_BTN = (By.XPATH, "//button[@ng-click='transactions()']")
 
-class MainPageLocators():
+class MainPageLocators:
     @staticmethod
     def base_button(name_btn: str) -> tuple[By, str]:
         '''
         Вернуть совокупный локатор в виде кортежа из метода поиска элемента (By) и локатора элемента (str)
 
-        :param name_btn: название кнопки (int)
+        :param name_btn: название кнопки (str)
         '''
         return By.XPATH, f"//button[starts-with(text(),'{name_btn}')]"
 
-class LoginPageLocators():
+class LoginPageLocators:
+    @staticmethod
+    def login_user(user_name: str) -> tuple[By, str]:
+        '''
+        Вернуть совокупный локатор в виде кортежа из метода поиска элемента (By) и локатора элемента (str)
+
+        :param user_name: имя пользователя (str)
+        '''
+        return By.XPATH, f'//option[contains(text(),"{user_name}")]'
+
     LOGIN_CUSTOMER_BTN = (By.XPATH, "//button[starts-with(text(),'Customer')]")
-    LOGIN_USER_SELECT = (By.ID, '#userSelect')
-    LOGIN_USER = (By.XPATH, '//option[contains(text(),"Harry Potter")]') # make param for user_name?
     LOGIN_BTN = (By.XPATH, '//button[@type="submit"]')
 
-class TransPageLocators():
-    TRANS_TABLE = (By.CSS_SELECTOR, '.table-striped')
-    TRANS_CELL_DATE = (By.XPATH, "//tbody/tr[contains(@id,'anchor')][last()]//td[1]")
-    TRANS_CELL_AMOUNT = (By.XPATH, "//tbody/tr[contains(@id,'anchor')][last()]//td[2]")
+class TransPageLocators:
+    @staticmethod
+    def trans_table_cell(cell_id: int) -> tuple[By, str]:
+        '''
+        Вернуть совокупный локатор в виде кортежа из метода поиска элемента (By) и локатора элемента (str)
 
+        :param cell_id: номер столбца (int)
+        '''
+        return By.XPATH, f"//tbody/tr[contains(@id,'anchor')][last()]//td[{cell_id}]"

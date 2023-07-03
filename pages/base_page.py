@@ -27,6 +27,9 @@ class BasePage:
         '''
         WebDriverWait(self.browser, timeout).until(EC.element_to_be_clickable(locator)).click()
 
+    def equal_element_text(self, locator: tuple[By, str], text: str, timeout: int = 10):
+        assert text == WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located(locator)).text, f"{text} not equal!"
+
     def get_element(self, locator: tuple, timeout: int = 10) -> WebElement:
         ''' Ожидает появление WebElement-а и возвращяет его '''
         return WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located(locator))
