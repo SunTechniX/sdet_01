@@ -7,8 +7,7 @@ from pages.trans_page import TransPage
 
 @pytest.mark.harry_potter
 class TestHarryPotter:
-    def test_harry_potter(self, browser):
-        browser.delete_all_cookies()
+    def test_harry_potter(self, browser, browser_del_cookie):
         login_page = LoginPage(browser)
         login_page.login_procedure()
         account_page = AccountPage(browser)

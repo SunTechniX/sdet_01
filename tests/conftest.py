@@ -41,3 +41,8 @@ def browser(request):
     browser.get(LinkData.LINK)
     yield browser
     browser.quit()
+
+
+@pytest.fixture
+def browser_del_cookie(browser):
+    browser.delete_all_cookies()
