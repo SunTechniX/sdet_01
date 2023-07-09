@@ -14,9 +14,9 @@ class MainPageLocators:
     @staticmethod
     def base_button(name_btn: str) -> tuple[By, str]:
         '''
-        Вернуть совокупный локатор в виде кортежа из метода поиска элемента (By) и локатора элемента (str)
+        Возвращает совокупный локатор в виде кортежа из метода поиска элемента и локатора элемента
 
-        :param name_btn: название кнопки (str)
+        :param name_btn: название кнопки
         '''
         return By.XPATH, f"//button[starts-with(text(),'{name_btn}')]"
 
@@ -24,9 +24,9 @@ class LoginPageLocators:
     @staticmethod
     def login_user(user_name: str) -> tuple[By, str]:
         '''
-        Вернуть совокупный локатор в виде кортежа из метода поиска элемента (By) и локатора элемента (str)
+        Возвращает совокупный локатор в виде кортежа из метода поиска элемента и локатора элемента
 
-        :param user_name: имя пользователя (str)
+        :param user_name: имя пользователя
         '''
         return By.XPATH, f'//option[contains(text(),"{user_name}")]'
 
@@ -37,8 +37,8 @@ class TransPageLocators:
     @staticmethod
     def trans_table_cell(cell_id: int) -> tuple[By, str]:
         '''
-        Вернуть совокупный локатор в виде кортежа из метода поиска элемента (By) и локатора элемента (str)
+        Возвращает совокупный локатор в виде кортежа из метода поиска элемента и локатора элемента
 
-        :param cell_id: номер столбца (int)
+        :param cell_id: номер столбца
         '''
         return By.XPATH, f"//tbody/tr[contains(@id,'anchor')][last()]//td[{cell_id}]"

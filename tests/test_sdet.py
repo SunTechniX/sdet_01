@@ -14,6 +14,6 @@ class TestHarryPotter:
         account_page.account_procedure()
         trans_page = TransPage(browser)
         trans_page.verify_transaction()
-        trans_page.click_logout_btn()
-        trans_page.click_home_btn()
+        trans_page.click_btn('Logout')
+        trans_page.click_btn('Home')
 
