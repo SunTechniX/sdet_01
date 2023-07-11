@@ -16,7 +16,7 @@ class TestHarryPotter:
         account_page.compare_welcome_user(LoginData.USER)
         account_page.click_btn_name('deposit()')
         account_page.write_to_deposit_field(AccountData.AMOUNT)
-        account_page.click_deposit_submit()
+        account_page.click_btn_deposit_submit()
         account_page.compare_deposit_success_msg_color(AccountData.COLOR)
         account_page.click_btn_name('transactions()')
         trans_page = TransPage(browser)

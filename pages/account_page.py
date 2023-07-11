@@ -19,7 +19,7 @@ class AccountPage(MainPage):
         ''' Нажимаеть на кнопку name_btn '''
         self.click_to_element(AccountPageLocators.button_name(name_btn))
 
-    def click_deposit_submit(self) -> None:
+    def click_btn_deposit_submit(self) -> None:
         ''' Нажимаеть на кнопку "Submit" '''
         self.click_to_element(AccountPageLocators.ACC_DEPOSIT_SUBMIT)
 
