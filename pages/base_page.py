@@ -21,13 +21,12 @@ class BasePage:
         '''
         Ожидает появления кликабельности элемента и кликает на него
 
-
         :param locator: Кортеж из метода поиска элемента и локатора элемента
         :param timeout: Время ожидания элемента в секундах
         '''
         WebDriverWait(self.browser, timeout).until(EC.element_to_be_clickable(locator)).click()
 
-    def equal_element_text(self, locator: tuple[By, str], text: str, timeout: int = 10):
+    def compare_element_text(self, locator: tuple[By, str], text: str, timeout: int = 10):
         assert text == WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located(locator)).text,\
             f"{text} не соответстует ожидаемому!"
 

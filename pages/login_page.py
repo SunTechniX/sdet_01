@@ -16,7 +16,7 @@ class LoginPage(MainPage):
         ''' Выбирает нужного пользователя '''
         self.click_to_element(LoginPageLocators.login_user(LoginData.USER))
 
-    def login_procedure(self) -> None:
+    def login(self) -> None:
         '''
         Кликает по кнопке Customer Login
         Выбирает логин 'Гарри Поттер'

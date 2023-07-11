@@ -19,14 +19,12 @@ def browser(request):
     headless = request.config.getoption('headless')
     browser = None
     if browser_name == "chrome":
-        print("\nstart chrome browser for test..")
         chrome_options = Options_Chrome()        #
         if headless == 'true':
             chrome_options.add_argument('headless')
         chrome_options.add_argument("--window-size=1350,800")
         browser = webdriver.Chrome(options=chrome_options)
     elif browser_name == "firefox":
-        print("\nStart firefox browser for test..")
         if headless == 'true':
             os.environ['MOZ_HEADLESS'] = '1'
         firefox_profile = webdriver.FirefoxProfile()

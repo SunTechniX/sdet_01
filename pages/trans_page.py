@@ -1,5 +1,5 @@
 import locale
-from datetime import datetime
+from datetime import datetime, date
 
 from .main_page import MainPage
 from data.locators import TransPageLocators
@@ -20,22 +20,16 @@ class TransPage(MainPage):
 
         :param amount: сумма внесения на депозит (int)
         '''
-        trans_amount_s = self.get_element_text(TransPageLocators.trans_table_cell(2))
-        trans_amount = -1
-        if trans_amount_s.isnumeric():
-            trans_amount = int(trans_amount_s)
+        trans_amount = int(self.get_element_text(TransPageLocators.trans_table_cell(2)))
         assert amount == trans_amount, "Сумма перевода не соответвет ожидаемой!"
 
     def compare_trans_cell_date(self) -> None:
         ''' Сравнивает текущую дату с датой в таблице Transactions '''
-        locale.setlocale(locale.LC_TIME, 'en')
         dtext = self.get_element_text(TransPageLocators.trans_table_cell(1))
-        month = datetime.now().strftime("%b")
-        year = str(datetime.now().year)
-        day = str(datetime.now().day)
-        assert day in dtext and month in dtext and year in dtext, "Текущая дата и дата транзакции не совпадают!"
+        datenow = date.today().strftime("%b %d, %Y")
+        assert datenow in dtext, "Текущая дата и дата транзакции не совпадают!"
 
-    def verify_transaction(self) -> None:
+    def transaction(self) -> None:
         ''' Проверяет таблицу Transactions на наличие записи о проведённой операции '''
         self.assert_trans_cell_date()
         self.compare_trans_cell_date()
