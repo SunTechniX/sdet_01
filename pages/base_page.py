@@ -41,3 +41,6 @@ class BasePage:
     def write_to_element(self, locator: tuple[By, str], text: str, timeout=10) -> None:
         ''' Ожидает появления WebElement-а и пишет в него text '''
         WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located(locator)).send_keys(text)
+
+    def reload_page(self):
+        self.browser.refresh()

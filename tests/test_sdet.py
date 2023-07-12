@@ -2,6 +2,7 @@ import pytest
 
 from data.account_data import AccountData
 from data.login_data import LoginData
+from pages.home_page import HomePage
 from pages.login_page import LoginPage
 from pages.account_page import AccountPage
 from pages.trans_page import TransPage
@@ -11,7 +12,7 @@ from pages.trans_page import TransPage
 class TestHarryPotter:
     def test_harry_potter(self, browser, browser_del_cookie):
         login_page = LoginPage(browser)
-        login_page.login()
+        login_page.make_login()
         account_page = AccountPage(browser)
         account_page.compare_welcome_user(LoginData.USER)
         account_page.click_btn_name('deposit()')
@@ -20,7 +21,9 @@ class TestHarryPotter:
         account_page.compare_deposit_success_msg_color(AccountData.COLOR)
         account_page.click_btn_name('transactions()')
         trans_page = TransPage(browser)
-        trans_page.transaction()
+        trans_page.assert_transaction()
         trans_page.click_btn_starts_with('Logout')
         trans_page.click_btn_starts_with('Home')
+        home_page = HomePage(browser)
+        home_page.assert_home_page()
 
