@@ -10,6 +10,7 @@ from pages.trans_page import TransPage
 
 @pytest.mark.harry_potter
 class TestHarryPotter:
+
     def test_harry_potter(self, browser, browser_del_cookie):
         login_page = LoginPage(browser)
         login_page.make_login()
