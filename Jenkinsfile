@@ -1,5 +1,10 @@
 pipeline {
-    agent any  // Запускает на любом доступном агенте
+//     agent any  // Запускает на любом доступном агенте
+    agent {
+        dockerfile {
+            filename 'Dockerfile'  // Использует Dockerfile из репозитория
+        }
+    }
 
     stages {
         // 1. Получение кода из Git
