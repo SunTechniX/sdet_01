@@ -31,9 +31,16 @@ def browser(request):
         browser = webdriver.Firefox(firefox_profile=firefox_profile)
         browser.implicitly_wait(5)
     elif browser_name == "hub":
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument("--disable-gpu")
+        chrome_options.capabilities["browserName"] = "chrome"
+        chrome_options.browser_version = "128.0"
         browser = webdriver.Remote(
             command_executor='http://localhost:4444/wd/hub',
-            desired_capabilities={"browserName": "chrome", 'javascriptEnabled': True})
+            options=chrome_options)
+            # desired_capabilities={"browserName": "chrome",
+            #                       "browserVersion"
+            #                       'javascriptEnabled': True})
     else:
         raise pytest.UsageError("--browser_name should be chrome, firefox or hub")
     browser.get(LinkData.LINK)
