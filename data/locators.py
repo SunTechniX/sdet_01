@@ -45,7 +45,7 @@ class LoginPageLocators:
 
 class TransPageLocators:
     @staticmethod
-    def trans_table_cell(cell_id: int) -> tuple[By, str]:
+    def trans_table_cell(cell_id: int) -> tuple[str, str]:
         '''
         Возвращает совокупный локатор в виде кортежа из метода поиска элемента и локатора элемента
 

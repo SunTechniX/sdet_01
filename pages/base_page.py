@@ -28,10 +28,10 @@ class BasePage:
 
     def compare_element_text(self, locator: tuple[By, str], text: str, timeout: int = 10):
         assert text == WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located(locator)).text,\
-            f"{text} не соответстует ожидаемому!"
+            f"{text} не соответствует ожидаемому!"
 
     def get_element(self, locator: tuple, timeout: int = 10) -> WebElement:
-        ''' Ожидает появление WebElement-а и возвращяет его '''
+        ''' Ожидает появление WebElement-а и возвращает его '''
         return WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located(locator))
 
     def get_element_text(self, locator: tuple[By, str]) -> str:

@@ -1,4 +1,5 @@
 import locale
+import time
 from datetime import datetime, date
 
 from .main_page import MainPage
@@ -27,10 +28,12 @@ class TransPage(MainPage):
         ''' Сравнивает текущую дату с датой в таблице Transactions '''
         date_in_table = self.get_element_text(TransPageLocators.trans_table_cell(1))
         today_date = date.today().strftime("%b %d, %Y")
-        assert today_date in date_in_table, "Текущая дата и дата транзакции не совпадают!"
+        assert today_date in date_in_table, \
+            f"Текущая дата '{today_date}' и \nдата транзакции '{date_in_table}' не совпадают!"
 
     def assert_transaction(self) -> None:
         ''' Проверяет таблицу Transactions на наличие записи о проведённой операции '''
+        # time.sleep(300)
         self.assert_trans_cell_date_exist()
         self.assert_trans_cell_date_compare()
         self.assert_trans_cell_amount_exist()
